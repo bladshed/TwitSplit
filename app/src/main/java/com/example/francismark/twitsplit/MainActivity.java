@@ -1,22 +1,27 @@
 package com.example.francismark.twitsplit;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     // Declare variable
     private EditText message;
     private Button submit_btn;
+    private Boolean bool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bool = true;
 
         // Initialize UI variables
         message = findViewById(R.id.form_message_field);
@@ -29,10 +34,30 @@ public class MainActivity extends AppCompatActivity {
                 // Get value from message field
                 String message_str = message.getText().toString();
 
-                // Pass the value to the next activity
-                Intent intent = new Intent(MainActivity.this, MessageActivity.class);
-                intent.putExtra("MESSAGE", message_str);
-                startActivity(intent);
+                // Split message by whitespace
+                String[] messageAry = message_str.split(" ");
+
+                int ctr = 0;
+
+                // Count lines for split messages
+                for (String word: messageAry){
+                    if(word.length() > 50){
+                        Toast.makeText(MainActivity.this, "ERROR: Word/s contained more than 50 characters.",
+                                Toast.LENGTH_LONG).show();
+                        bool = false;
+                        ctr = 1;
+                    }
+                    if (ctr == 0){
+                        bool = true;
+                    }
+                }
+
+                if (bool) {
+                    // Pass the value to the next activity
+                    Intent intent = new Intent(MainActivity.this, MessageActivity.class);
+                    intent.putExtra("MESSAGE", message_str);
+                    startActivity(intent);
+                }
             }
         });
     }
