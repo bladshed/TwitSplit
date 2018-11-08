@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MessageActivity extends AppCompatActivity {
 
-    // Declare variable
+    // Declare variables
     private TextView displayMessage;
     private Button backBtn;
 
@@ -33,7 +33,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
+        // Get the intent of the activity
         Intent intent = getIntent();
 
         // Get message from previous activity
