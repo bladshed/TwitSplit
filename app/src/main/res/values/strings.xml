@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TwitSplit</string>
+    <string name="title_activity_message">MessageActivity</string>
 </resources>
