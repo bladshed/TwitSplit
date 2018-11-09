@@ -43,7 +43,7 @@ public class ExampleUnitTest {
      * This test will check if the return message will have an error
      */
     @Test
-    public void wordWithmoreThanFiftyChars() {
+    public void wordWithMoreThanFiftyChars() {
 
         String expectedVal = "[ERROR] Hello there! ThisShouldReturnAnErrorBecauseThisWordIsMoreThan50Characters end";
 
